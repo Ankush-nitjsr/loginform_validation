@@ -38,8 +38,9 @@ function App() {
 
   return (
     <div className="App">
-      <form action="" onSubmit={createAccount}>
-        <div>
+      <form action="" onSubmit={createAccount} className="inputForm">
+        <h2>Login form</h2>
+        <div class="section">
           <label htmlFor="email">Email</label>
           <br />
           <input
@@ -50,11 +51,14 @@ function App() {
               validateEmail(e.target.value);
             }}
             value={email}
+            style={{
+              border: emailError === null ? "2px solid green" : "2px solid red",
+            }}
           />
           <br />
           {emailError !== null ? <p>{emailError}</p> : ""}
         </div>
-        <div>
+        <div class="section">
           <label htmlFor="password">Password:</label>
           <br />
           <input
@@ -65,11 +69,14 @@ function App() {
               validatePassword(e.target.value);
             }}
             value={password}
+            style={{
+              border: passwordError ? "2px solid green" : "2px solid red",
+            }}
           />
           <br />
           {!passwordError && <p>password must be at least 8 characters</p>}
         </div>
-        <div>
+        <div class="section">
           <label htmlFor="confirm-password">Confirm Password:</label>
           <br />
           <input
@@ -78,6 +85,9 @@ function App() {
             onChange={(e) => {
               setConfirmPassword(e.target.value);
               matchPassword(e.target.value);
+            }}
+            style={{
+              border: matchPasswordError ? "2px solid green" : "2px solid red",
             }}
           />
           <br />
